@@ -1,0 +1,4 @@
+ADMIN
+
+INSERT INTO `users` (`id`, `name`, `email`, `role`, `email_verified_at`, `password`, `phone`, `gender`, `remember_token`, `created_at`, `updated_at`) VALUES (NULL, 'admin', 'admin@admin.com', '2', NULL, '$2y$10$zFPQoTUoLgK8wBcQtd18tOeLBm1cHoU9/Kp3yrLStS6CVW/8/jOxS', '1111111111', 'Male', NULL, NULL, NULL);
+
