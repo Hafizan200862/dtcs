@@ -14,7 +14,7 @@ class Treatment extends Model
         return $this->belongsTo(Patient::class, 'patient_id'); // specific the column
     }
 
-    public function services(){
-        return $this->belongsToMany(Service::class);
+    public function session(){
+        return $this->belongsToMany(Session::class, 'session_id');
     }
 }

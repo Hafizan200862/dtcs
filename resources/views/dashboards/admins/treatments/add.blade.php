@@ -1,5 +1,5 @@
 @extends('dashboards.admins.layouts.admin-dash-layout')
-@section('title','Add Services')
+@section('title','Add Treatments')
 
 @section('content')
 
@@ -9,7 +9,7 @@
         <div class="row mb-2">
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-left">
-                    <a href="{{ route('admin.service.index') }}" type="button" class="btn btn-primary">Back</a>
+                    <a href="{{ route('admin.treatment.index') }}" type="button" class="btn btn-primary">Back</a>
                 </ol>
             </div>
         </div>
@@ -47,11 +47,11 @@
                 <!-- general form elements -->
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">Add Services</h3>
+                        <h3 class="card-title">Add Treatments</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form action="{{ route('adminAddService') }}" method="post">
+                    <form action="{{ route('adminAddTreatment') }}" method="post">
                         @csrf
                         <div class="card-body">
                             <div class="form-group">

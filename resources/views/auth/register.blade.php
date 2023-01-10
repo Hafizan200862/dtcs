@@ -65,8 +65,7 @@
                                 <div class="form-group">
 									<label for="gender">Gender</label>
 									<div class="col-md-6">
-                                        <select id="gender" name='gender' class="form-control" value="{{ old('gender') }}">
-                                            <option value=''> --Select-- </option>
+                                        <select id="gender" name="gender" class="form-control" value="{{ old('gender') }}">
                                             <option value='male'> Male </option>
                                             <option value='female'> Female </option>
                                         </select>

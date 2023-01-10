@@ -21,7 +21,7 @@ class DentistAppointmentController extends Controller
     public function index()
     {
         $appointments = Appointment::all();
-        
+
         // ->where('user_id', '=', );
 
         return view('dashboards.dentists.appointments.index', compact('appointments'));
@@ -36,8 +36,8 @@ class DentistAppointmentController extends Controller
     {
         // $appointments = Appointment::where('doctor_id', '=', $loginedDoctorID)->get();
         $dentists = User::all()
-            
-            ->where('role','<' ,'2')
+
+            ->where('role', '<', '2')
             ->pluck('name', 'id');
         $patients = Patient::all()->pluck('name', 'id');
 
@@ -62,12 +62,18 @@ class DentistAppointmentController extends Controller
         }
     }
 
-    public function appointmentSession($id)
-    {
-        $appointmentSession = DB::table('appointments')->where('id',$id)->first();
-        // $patients = Patient::all()->pluck('id', 'name', 'phone', 'gender', 'address');
-        // dd($patients);
-        return view('dashboards.dentists.sessions.add',compact('appointmentSession'));
-        // return view('dashboards.dentists.sessions.add',compact('appointmentSession', 'patients'));
-    }
+    // public function appointmentSession($id)
+    // {
+    //     $appointmentSession = Appointment::findOrFail($id);
+    //     $patients = Patient::pluck('id','name');
+    //     // dd($patients);
+    //     return view('dashboards.dentists.sessions.add',compact('appointmentSession', 'patients'));
+
+    //     // return view('dashboards.dentists.sessions.add',
+    //     //     [
+    //     //         'appointment' => Appointment::findOrFail($id),
+    //     //         'patient' => Patient::pluck('name','id'),
+    //     //     ]
+    //     // );
+    // }
 }

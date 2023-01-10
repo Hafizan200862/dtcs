@@ -18,7 +18,7 @@ class CreateSessionsTable extends Migration
             $table->id();
             $table->foreignIdFor(Appointment::class)->nullable()->constrained();
             // $table->foreignIdFor(Treatment::class)->nullable()->constrained();
-            $table->string('session_desc');
+            $table->string('notes');
             $table->timestamps();
         });
     }

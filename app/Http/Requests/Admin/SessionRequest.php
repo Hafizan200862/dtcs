@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class TreatmentRequest extends FormRequest
+class SessionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,6 +25,16 @@ class TreatmentRequest extends FormRequest
     {
         return [
             //
+            'appointment_id'   => [
+                'required',
+                'integer',
+            ],
+            'treatments.*'  => [
+                'integer',
+            ],
+            'treatments'    => [
+                'array',
+            ],
         ];
     }
 }

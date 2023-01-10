@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\AdminCalendarController;
 use App\Http\Controllers\Admin\AdminDentistController; //admin
 use App\Http\Controllers\Admin\AdminPatientController;
 use App\Http\Controllers\Admin\AdminServiceController;
+use App\Http\Controllers\Admin\AdminTreatmentController;
 
 //dentist
 use App\Http\Controllers\Dentist\DentistController;
@@ -52,53 +53,49 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //prefix = /****/dashboard
 Route::group(['prefix'=>'admin','middleware'=>['isAdmin','auth','PreventBackHistory']],function(){
     
-    // dashboard
+    // DASHBOARD
     // index
     Route::get('dashboard',[AdminController::class,'index'])->name('admin.dashboard');
 
-    // Appointment
+    // APPOINTMENT
     // index
     Route::get('appointment',[AdminAppointmentController::class,'index'])->name('admin.appointment.index');
     // get and post register dentist
     Route::get('add/appointment', [AdminAppointmentController::class,'addAppointmentForm'])->name('adminAddAppointmentForm');
     Route::post('add-appointment', [AdminAppointmentController::class,'addAppointment'])->name('adminAddAppointment');
 
-    // Session
+    // SESSION
     // index
-    Route::get('session',[AdminTreatmentController::class,'session'])->name('admin.session.index');
+    // Route::get('session',[AdminTreatmentController::class,'session'])->name('admin.session.index');
 
-
-    // Calender
+    // CALENDAR
     // index
     Route::get('calendar',[AdminCalendarController::class,'index'])->name('admin.calendar.index');
     Route::post('appointment',[AdminAppointmentController::class,'store'])->name('admin.appointmentStore');
     
-    // Dentist
+    // DENTIST
     // index
     Route::get('dentist',[AdminDentistController::class,'index'])->name('admin.dentist.index'); 
-    
     // get and post register dentist
     Route::get('add/dentist', [AdminDentistController::class,'addDentistForm'])->name('adminAddDentistForm');
     Route::post('add-dentist', [AdminDentistController::class,'addDentist'])->name('adminAddDentist');
 
-    // Patient
+    // PATIENT
     // index
     Route::get('patient',[AdminPatientController::class,'index'])->name('admin.patient.index');
-    
     // get and post register patient
     Route::get('add/patient', [AdminPatientController::class,'addPatientForm'])->name('adminAddPatientForm');
     Route::post('add-patient', [AdminPatientController::class,'addPatient'])->name('adminAddPatient');
 
-    // Service
+    // TREATMENT
     // index
-    Route::get('service',[AdminServiceController::class,'index'])->name('admin.service.index');
+    Route::get('treatment',[AdminTreatmentController::class,'index'])->name('admin.treatment.index');
+    // get and post register treatment
+    Route::get('add/treatment', [AdminTreatmentController::class,'addTreatmentForm'])->name('adminAddTreatmentForm');
+    Route::post('add-service', [AdminTreatmentController::class,'addTreatment'])->name('adminAddTreatment');
 
-    // get and post register service
-    Route::get('add/service', [AdminServiceController::class,'addServiceForm'])->name('adminAddServiceForm');
-    Route::post('add-service', [AdminServiceController::class,'addService'])->name('adminAddService');
-
-    Route::get('treatment',[AdminController::class,'treatment'])->name('admin.treatment'); 
-    Route::get('payment',[AdminController::class,'payment'])->name('admin.payment');
+    // Route::get('treatment',[AdminController::class,'treatment'])->name('admin.treatment'); 
+    // Route::get('payment',[AdminController::class,'payment'])->name('admin.payment');
 
 });
 
@@ -116,12 +113,11 @@ Route::group(['prefix'=>'dentist','middleware'=>['isDentist','auth','PreventBack
     Route::get('add/appointment', [DentistAppointmentController::class,'addAppointmentForm'])->name('dentistAddAppointmentForm');
     Route::post('add-appointment', [DentistAppointmentController::class,'addAppointment'])->name('dentistAddAppointment');
 
-    Route::get('appointmentSession/{id}',[DentistAppointmentController::class,'appointmentSession'])->name('appointmentSession');
-
     // Session
-    // Route::get('session',[DentistSessionController::class,'show'])->name('dentist.session.show');
-    
-    // Route::post('session',[DentistSessionController::class,'update'])->name('dentist.session.update');
+    // get
+    Route::get('add/session/{id}',[DentistSessionController::class,'addSessionForm'])->name('dentistAddSessionForm');
+    // post
+    Route::post('add/session/{id}',[DentistSessionController::class,'addSession'])->name('dentistAddSession');
 
     // Calender
     // index
