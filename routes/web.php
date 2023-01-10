@@ -117,7 +117,7 @@ Route::group(['prefix'=>'dentist','middleware'=>['isDentist','auth','PreventBack
     // get
     Route::get('add/session/{id}',[DentistSessionController::class,'addSessionForm'])->name('dentistAddSessionForm');
     // post
-    Route::post('add/session/{id}',[DentistSessionController::class,'addSession'])->name('dentistAddSession');
+    // Route::post('add/session/{id}',[DentistSessionController::class,'addSession'])->name('dentistAddSession');
 
     // Calender
     // index

@@ -57,7 +57,7 @@
                 </button>
             </div>
         </div>
-        <form action="{{ route('dentistAddSession') }}" method="POST">
+        <form action="" method="POST">
             @csrf
             <!-- /.card-header -->
             <div class="card-body"> 
