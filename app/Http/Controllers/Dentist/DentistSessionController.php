@@ -68,10 +68,7 @@ class DentistSessionController extends Controller
         //         'notes' => $request['notes'],
         // ]);
 
-        // return redirect()->route('admin.appointments.index')->with([
-        //     'message' => 'successfully created !',
-        //     'alert-type' => 'success'
-        // ]);
+        
         if ($sessions->save()) {
             return redirect()->route('dashboards.dentists.sessions.add')->with('success', 'Session have been succesfully inserted');
         } else {
