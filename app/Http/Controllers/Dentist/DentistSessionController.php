@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Dentist;
 
 use App\Models\Session;
-use App\Models\Patient; 
+use App\Models\Patient;
 use App\Models\Treatment;
-use App\Models\Appointment; 
+use App\Models\Appointment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -23,10 +23,10 @@ class DentistSessionController extends Controller
     public function addSessionForm($id)
     {
         $addSession = Appointment::findOrFail($id);
-        $patients = Patient::pluck('id','name');
+        $patients = Patient::pluck('id', 'name');
         $treatments = Treatment::all()->pluck('name', 'id');
         // dd($patients);
-        return view('dashboards.dentists.sessions.add',compact('addSession', 'patients', 'treatments'));
+        return view('dashboards.dentists.sessions.add', compact('addSession', 'patients', 'treatments'));
 
         // return view('dashboards.dentists.sessions.add',
         //     [
@@ -55,7 +55,7 @@ class DentistSessionController extends Controller
         // 'password' => ['required', 'string', 'min:8', 'confirmed'],
         // 'phone' => ['required', 'string', 'min:8', 'max:11'],
         // ]);
-        
+
         $sesions = new Session();
         // $sesions->apppointment_id = $request->patient_name;
         // $sesions->apppointment_id = $request->patient_phone;
@@ -68,7 +68,7 @@ class DentistSessionController extends Controller
         //         'notes' => $request['notes'],
         // ]);
 
-        
+
         if ($sessions->save()) {
             return redirect()->route('dashboards.dentists.sessions.add')->with('success', 'Session have been succesfully inserted');
         } else {
