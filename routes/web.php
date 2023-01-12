@@ -116,6 +116,8 @@ Route::group(['prefix' => 'dentist', 'middleware' => ['isDentist', 'auth', 'Prev
     // Session
     // get
     Route::get('add/session/{id}', [DentistSessionController::class, 'addSessionForm'])->name('dentistAddSessionForm');
+    Route::post('storesession', [DentistSessionController::class, 'StoreSession'])->name('dentistStoreSessionForm');
+    Route::post('/storeyajra9', [UserController::class, 'StoreYajra9'])->name('user.storeyajra9');
     // post
     // Route::post('add/session/{id}',[DentistSessionController::class,'addSession'])->name('dentistAddSession');
 

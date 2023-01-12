@@ -42,37 +42,13 @@ class DentistSessionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function addSession(SessionRequest $request)
+    public function StoreSession(Request $request)
     {
-        $sessions = Session::create($request->validated() + [
-            'note' => $request->notes
-        ]);
-        $sessions->treatments()->sync($request->input('treatments', []));
-
-        // $request->validate([
-        // 'appointment_id' => ['required', 'string', 'max:255'],
-        // 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-        // 'password' => ['required', 'string', 'min:8', 'confirmed'],
-        // 'phone' => ['required', 'string', 'min:8', 'max:11'],
-        // ]);
-
-        $sesions = new Session();
-        // $sesions->apppointment_id = $request->patient_name;
-        // $sesions->apppointment_id = $request->patient_phone;
-        // $sesions->apppointment_id = $request->patient_gender;
-        // $sesions->apppointment_id = $request->patient_address;
-        $sesions->notes = $request->notes;
-
-        // $sessions = DB::table('sessions')->insert([
-        //         'appointment_id' => $request['name'],
-        //         'notes' => $request['notes'],
-        // ]);
-
-
-        if ($sessions->save()) {
-            return redirect()->route('dashboards.dentists.sessions.add')->with('success', 'Session have been succesfully inserted');
-        } else {
-            return redirect()->route('dashboards.dentists.sessions.add')->with('error', 'Session have been succesfully inserted');
-        }
+        Session::create($request->validate([
+            'session_desc' => 'nullable',
+            'patient_id' => 'nullable',
+            'appointment_id' => 'nullable'
+        ]));
+        return redirect()->route('dentist.appointment.index')->with('success', 'Session have been succesfully inserted');
     }
 }
