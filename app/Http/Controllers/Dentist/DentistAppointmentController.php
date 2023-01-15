@@ -22,8 +22,6 @@ class DentistAppointmentController extends Controller
     {
         $appointments = Appointment::all();
 
-        // ->where('user_id', '=', );
-
         return view('dashboards.dentists.appointments.index', compact('appointments'));
     }
 
@@ -34,9 +32,7 @@ class DentistAppointmentController extends Controller
      */
     public function addAppointmentForm()
     {
-        // $appointments = Appointment::where('doctor_id', '=', $loginedDoctorID)->get();
         $dentists = User::all()
-
             ->where('role', '<', '2')
             ->pluck('name', 'id');
         $patients = Patient::all()->pluck('name', 'id');

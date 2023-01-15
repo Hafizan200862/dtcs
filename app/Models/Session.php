@@ -18,10 +18,10 @@ class Session extends Model
 
     public function services()
     {
-        return $this->belongsToMany(Service::class)->withPivot('tooth_id');
+        return $this->belongsToMany(Service::class)->withPivot('tooth_id',['teeth_no','service_remark']);
     }
     public function teeth()
     {
-        return $this->belongsToMany(Tooth::class)->withPivot('service_id');
+        return $this->belongsToMany(Tooth::class)->withPivot('service_id',['teeth_icdas','teeth_remark']);
     }
 }

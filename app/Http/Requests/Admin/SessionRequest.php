@@ -32,15 +32,6 @@ class SessionRequest extends FormRequest
                 'required',
                 'integer',
             ],
-            // 'treatments.*'  => [
-            //     'integer',
-            // ],
-            // 'treatments'    => [
-            //     'array',
-            // ],
-            // 'sessions_treatments_notes' => [
-            //     'nullable',
-            // ],
         ];
     }
 }

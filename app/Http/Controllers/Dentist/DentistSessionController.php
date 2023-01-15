@@ -9,6 +9,7 @@ use App\Models\Session;
 use App\Models\Treatment;
 use App\Models\Appointment;
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\SessionRequest;
@@ -47,21 +48,40 @@ class DentistSessionController extends Controller
      */
     public function StoreSession(SessionRequest $request)
     {
-        
+        // dd($request->all());
         $session = Session::create($request->validated() 
         + ['session_note' => $request->session_note]
         );
-        
-        $session->services()->attach($request->services);
-        $session->teeth()->attach($request->teeth);
-        
+
+        $services = $request->input('services', []);
+        $teeth_no = $request->input('teeth_no', []);
+        $service_remark = $request->input('service_remark', []);
+
+        for($s=0; $s < count($services); $s++)
+        {
+            if($services[$s] != '')
+            {
+                $session->services()->attach($services[$s],['teeth_no' => $teeth_no[$s],'service_remark' => $service_remark[$s]]);
+            }
+        }
+
+        $tooth = $request->input('teeth',[]);
+        $teeth_icdas = $request->input('teeth_icdas',[]);
+        $teeth_remark = $request->input('teeth_remark',[]);
 
         
+        for($t=0; $t < count($tooth); $t++)
+        {
+            if($tooth[$t] != '')
+            {
+                $session->teeth()->attach($tooth[$t],['teeth_icdas' => $teeth_icdas[$t],'teeth_remark' => $teeth_remark[$t]]);
+            }
+        }
+
         if ($session->save()) {
             return redirect()->route('dentist.appointment.index')->with('success', 'Record Session have been succesfully inserted');
         } else {
             return redirect()->route('dentist.appointment.index')->with('error', 'Record Session have been succesfully inserted');
         }
-
     }
 }
