@@ -1,5 +1,5 @@
 @extends('dashboards.admins.layouts.admin-dash-layout')
-@section('title','Treatment')
+@section('title','Service')
 
 @section('content')
 
@@ -10,12 +10,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Treatment(s)</h1>
+                    <h1>Service(s)</h1>
                 </div>
                 <!-- Add Services Button -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <a href="{{ route('adminAddTreatmentForm') }}" type="button" class="btn btn-primary">Add Treatment</a>
+                        <a href="{{ route('adminAddServiceForm') }}" type="button" class="btn btn-primary">Add Service</a>
                     </ol>
                 </div>
                 <!-- /.services-button-end -->
@@ -35,7 +35,7 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                                <table id="listTreatmentTable" class="table table-bordered table-striped">
+                                <table id="listServiceTable" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
                                         <th style="width: 20px">No</th>
@@ -45,11 +45,11 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach ($list as $treatment)
+                                @foreach ($list as $service)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $treatment->name }}</td>
-                                        <td>{{ $treatment->price }}</td>
+                                        <td>{{ $service->service_name }}</td>
+                                        <td>{{ $service->service_price }}</td>
                                         <td>
                                             <div class="btn-group btn-group">
                                                 {{-- <a href="" class="btn btn-secondary">
@@ -121,10 +121,10 @@
     <!-- Page specific script -->
     <script>
         $(function () {
-          $("#listTreatmentTable").DataTable({
+          $("#listServiceTable").DataTable({
             "responsive": true, "lengthChange": false, "autoWidth": false,
             "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-          }).buttons().container().appendTo('#listTreatmentTable_wrapper .col-md-6:eq(0)');
+          }).buttons().container().appendTo('#listServiceTable_wrapper .col-md-6:eq(0)');
         });
       </script>
     <!-- /.script -->

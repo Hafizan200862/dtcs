@@ -1,12 +1,10 @@
 <?php
 
-use App\Models\Patient;
-use App\Models\Appointment;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSessionsTable extends Migration
+class CreateTeethTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,11 +13,9 @@ class CreateSessionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('sessions', function (Blueprint $table) {
+        Schema::create('teeth', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Appointment::class)->nullable()->constrained();
-            $table->foreignIdFor(Patient::class)->nullable()->constrained();
-            $table->text('session_note')->nullable();
+            $table->integer('teeth_no');
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ class CreateSessionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sessions');
+        Schema::dropIfExists('teeth');
     }
 }

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Dentist;
 
-use App\Models\Session;
+use App\Models\Tooth;
 use App\Models\Patient;
+use App\Models\Service;
+use App\Models\Session;
 use App\Models\Treatment;
 use App\Models\Appointment;
 use Illuminate\Http\Request;
@@ -22,18 +24,19 @@ class DentistSessionController extends Controller
      */
     public function addSessionForm($id)
     {
-        $addSession = Appointment::findOrFail($id);
-        $patients = Patient::pluck('id', 'name');
-        $treatments = Treatment::all()->pluck('name', 'id');
-        // dd($patients);
-        return view('dashboards.dentists.sessions.add', compact('addSession', 'patients', 'treatments'));
+        // $addSession = Appointment::findOrFail($id);
+        // $patients = Patient::pluck('id', 'name');
+        // $services = Service::all()->pluck('service_name', 'id');
+        // $teeth = Tooth::all()->pluck('teeth_no', 'id');
+        // return view('dashboards.dentists.sessions.add', compact('addSession', 'patients', 'services','teeth'));
 
-        // return view('dashboards.dentists.sessions.add',
-        //     [
-        //         'appointment' => Appointment::findOrFail($id),
-        //         'patient' => Patient::pluck('name','id'),
-        //     ]
-        // );
+        $session = Appointment::findOrFail($id);
+        $services = Service::all()->pluck('service_name', 'id');
+        $teeth = Tooth::all()->pluck('teeth_no', 'id');
+        // $services = $session->services;
+        // $teeth = $session->teeth;
+        return view('dashboards.dentists.sessions.add', compact('session', 'services', 'teeth'));
+        
     }
 
     //
@@ -42,13 +45,23 @@ class DentistSessionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function StoreSession(Request $request)
+    public function StoreSession(SessionRequest $request)
     {
-        Session::create($request->validate([
-            'session_desc' => 'nullable',
-            'patient_id' => 'nullable',
-            'appointment_id' => 'nullable'
-        ]));
-        return redirect()->route('dentist.appointment.index')->with('success', 'Session have been succesfully inserted');
+        
+        $session = Session::create($request->validated() 
+        + ['session_note' => $request->session_note]
+        );
+        
+        $session->services()->attach($request->services);
+        $session->teeth()->attach($request->teeth);
+        
+
+        
+        if ($session->save()) {
+            return redirect()->route('dentist.appointment.index')->with('success', 'Record Session have been succesfully inserted');
+        } else {
+            return redirect()->route('dentist.appointment.index')->with('error', 'Record Session have been succesfully inserted');
+        }
+
     }
 }

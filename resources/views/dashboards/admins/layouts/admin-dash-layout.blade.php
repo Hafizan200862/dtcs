@@ -134,10 +134,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('admin.treatment.index') }}" class="nav-link">
+                            <a href="{{ route('admin.service.index') }}" class="nav-link">
                                 <i class="nav-icon fas fa-bars"></i>
                                 <p>
-                                    Treatment
+                                    Service
                                 </p>
                             </a>
                         </li>

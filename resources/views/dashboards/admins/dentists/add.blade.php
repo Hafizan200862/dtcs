@@ -96,7 +96,7 @@
                                     <!-- select -->
                                     <div class="form-group">
                                         <label>Gender</label>
-                                        <select id="gender" class="form-control" name='gender'
+                                        <select id="gender" class="form-control" name="gender"
                                             value="{{ old('gender') }}">
                                             <option value='male'> Male </option>
                                             <option value='female'> Female </option>

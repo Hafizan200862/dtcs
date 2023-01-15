@@ -26,7 +26,7 @@ class PatientRequest extends FormRequest
         return [
             'name' =>
             [
-                'nullable',
+                'required',
             ],
         ];
     }

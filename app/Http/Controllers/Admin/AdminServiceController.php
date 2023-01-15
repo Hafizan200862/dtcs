@@ -28,13 +28,13 @@ class AdminServiceController extends Controller
     {
         // return $request->input();
         $request->validate([
-            'name'=>'required',
-            'price'=>'required'
+            'service_name'=>'required',
+            'service_price'=>'required'
         ]);
 
         $query = DB::table('services')->insert([
-            'name'=>$request->input('name'),
-            'price'=>$request->input('price')
+            'service_name'=>$request->input('service_name'),
+            'service_price'=>$request->input('service_price')
         ]);
 
         if($query)

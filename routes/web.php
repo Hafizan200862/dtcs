@@ -89,10 +89,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'auth', 'PreventB
 
     // TREATMENT
     // index
-    Route::get('treatment', [AdminTreatmentController::class, 'index'])->name('admin.treatment.index');
+    Route::get('service', [AdminServiceController::class, 'index'])->name('admin.service.index');
     // get and post register treatment
-    Route::get('add/treatment', [AdminTreatmentController::class, 'addTreatmentForm'])->name('adminAddTreatmentForm');
-    Route::post('add-service', [AdminTreatmentController::class, 'addTreatment'])->name('adminAddTreatment');
+    Route::get('add/service', [AdminServiceController::class, 'addServiceForm'])->name('adminAddServiceForm');
+    Route::post('add-service', [AdminServiceController::class, 'addService'])->name('adminAddService');
 
     // Route::get('treatment',[AdminController::class,'treatment'])->name('admin.treatment');
     // Route::get('payment',[AdminController::class,'payment'])->name('admin.payment');
@@ -116,10 +116,8 @@ Route::group(['prefix' => 'dentist', 'middleware' => ['isDentist', 'auth', 'Prev
     // Session
     // get
     Route::get('add/session/{id}', [DentistSessionController::class, 'addSessionForm'])->name('dentistAddSessionForm');
-    Route::post('storesession', [DentistSessionController::class, 'StoreSession'])->name('dentistStoreSessionForm');
-    Route::post('/storeyajra9', [UserController::class, 'StoreYajra9'])->name('user.storeyajra9');
     // post
-    // Route::post('add/session/{id}',[DentistSessionController::class,'addSession'])->name('dentistAddSession');
+    Route::post('storesession', [DentistSessionController::class, 'StoreSession'])->name('dentistStoreSessionForm');
 
     // Calender
     // index

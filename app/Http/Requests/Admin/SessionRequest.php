@@ -24,17 +24,23 @@ class SessionRequest extends FormRequest
     public function rules()
     {
         return [
-            //
-            'appointment_id'   => [
+            'appointment_id'    => [
                 'required',
                 'integer',
             ],
-            'treatments.*'  => [
+            'patient_id'    => [
+                'required',
                 'integer',
             ],
-            'treatments'    => [
-                'array',
-            ],
+            // 'treatments.*'  => [
+            //     'integer',
+            // ],
+            // 'treatments'    => [
+            //     'array',
+            // ],
+            // 'sessions_treatments_notes' => [
+            //     'nullable',
+            // ],
         ];
     }
 }
