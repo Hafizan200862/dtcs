@@ -20,8 +20,8 @@ class DentistRecordController extends Controller
     {
         $sessions = Session::where('patient_id', $id)->get();
         $patients = Patient::findOrFail($id);
-        
-        return view('dashboards.dentists.patients.records.index', compact('sessions','patients'));
+
+        return view('dashboards.dentists.patients.records.index', compact('sessions', 'patients'));
     }
 
     /**
