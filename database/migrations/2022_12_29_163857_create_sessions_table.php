@@ -24,6 +24,18 @@ class CreateSessionsTable extends Migration
         });
     }
 
+    //test
+    // public function up()
+    // {
+    //     Schema::create('sessions', function (Blueprint $table) {
+    //         $table->id();
+    //         $table->foreignIdFor(Appointment::class)->nullable()->constrained();
+    //         $table->foreignIdFor(Patient::class)->nullable()->constrained();
+    //         $table->text('session_note')->nullable();
+    //         $table->timestamps();
+    //     });
+    // }
+
     /**
      * Reverse the migrations.
      *

@@ -1,4 +1,4 @@
-@extends('dashboards.admins.layouts.admin-dash-layout')
+@extends('dashboards.receptionists.layouts.receptionist-dash-layout')
 @section('title','Appointment')
 
 @section('content')
@@ -15,7 +15,7 @@
             <!-- Add Appointment Button -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <a href="{{ route('admin.appointment.add') }}" type="button" class="btn btn-primary">Add
+                    <a href="" type="button" class="btn btn-primary">Add
                         Appointment</a>
                 </ol>
             </div>
@@ -48,22 +48,22 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse($appointments as $appointment)
-                                <tr data-entry-id="{{ $appointment->id }}">
-                                    <td>{{ $loop->iteration }}</td>
+                                {{-- @forelse($appointments as $appointment) --}}
+                                <tr data-entry-id="">
+                                    <td></td>
                                     <!-- $appointment->dentist(nama method)->name -->
-                                    <td>{{ $appointment->dentist->name }}</td>
-                                    <td>{{ $appointment->patient->name }}</td>
-                                    <td>{{ $appointment->start_time }}</td>
-                                    <td>{{ $appointment->finish_time }}</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
                                     <td>
                                         <div class="btn-group btn-group">
-                                            <a href="{{ route('admin.appointment.edit', $appointment->id) }}"
+                                            <a href=""
                                                 class="btn btn-info">
                                                 <i class="fas fa-pen"></i>
                                             </a>
                                             <form onclick="return confirm('are you sure ? ')" class="d-inline"
-                                                action="{{ route('admin.appointment.destroy', $appointment->id) }}"
+                                                action=""
                                                 method="POST">
                                                 @csrf
                                                 @method('delete')
@@ -75,7 +75,7 @@
                                         </div>
                                     </td>
                                 </tr>
-                                @endforeach
+                                {{-- @endforeach --}}
                             </tbody>
                         </table>
                     </div>

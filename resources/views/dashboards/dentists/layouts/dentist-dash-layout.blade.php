@@ -134,7 +134,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-medkit"></i>
                                 <p>
@@ -149,7 +149,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     Payment
                                 </p>
                             </a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->

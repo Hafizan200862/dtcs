@@ -18,13 +18,13 @@ class AdminServiceController extends Controller
     }
 
     // register service form
-    function addServiceForm()
+    function add()
     {
         return view('dashboards.admins.services.add');
     }
 
     // register service
-    function addService(Request $request)
+    function store(Request $request)
     {
         // return $request->input();
         $request->validate([

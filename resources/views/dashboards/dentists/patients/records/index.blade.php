@@ -1,5 +1,5 @@
 @extends('dashboards.dentists.layouts.dentist-dash-layout')
-@section('title','Patient')
+@section('title','Record')
 
 @section('content')
 
@@ -10,7 +10,14 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="card-title">Patient</h1>
+                    <ol class="breadcrumb float-sm-left">
+                        <h1 class="card-title">Record Treatment </h1>
+                    </ol>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <a href="{{ route('dentist.patient.index') }}" type="button" class="btn btn-primary">Back</a>
+                    </ol>
                 </div>
             </div>
         </div>
@@ -24,37 +31,31 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h1 class="card-title">Patient</h1>
+                            <h1 class="card-title">Patient Name: {{ $patients->name }}</h1>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                                <table id="listPatientTable" class="table table-bordered table-striped">
+                                <table id="listSessionTable" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>IC No</th>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Phone</th>
-                                        <th>Address</th>
-                                        <th>Gender</th>
+                                        <th>Session ID</th>
+                                        <th>Treatment Title</th>
+                                        <th>Date</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($patients as $patient)
-                                    <tr data-entry-id="{{ $patient->id }}">
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $patient->ic }}</td>
-                                        <td>{{ $patient->name }}</td>
-                                        <td>{{ $patient->email }}</td>
-                                        <td>{{ $patient->phone}}</td>
-                                        <td>{{ $patient->address}}</td>
-                                        <td>{{ $patient->gender}}</td>
+                                    @foreach ($sessions as $session)
+                                    <tr data-entry-id="{{ $session->id }}">
+                                        <td style="width: 20px;">{{ $loop->iteration }}</td>
+                                        <td>{{ $session->id }}</td>
+                                        <td>{{ $session->appointment->title }}</td>
+                                        <td>{{ $session->created_at }}</td>
                                         <td>
                                             <div class="btn-group btn-group">
-                                                <a href="{{ route('dentist.patient.record.index', $patient->id) }}" class="btn btn-secondary">
-                                                    <i class="">View Record</i>
+                                                <a href="{{ route('dentist.patient.record.show', $session->id) }}" class="btn btn-secondary">
+                                                    <i class="fas fa-eye"></i>
                                                 </a>
                                                 <a href="" class="btn btn-info">
                                                     <i class="fas fa-pen"></i>
@@ -122,10 +123,10 @@
     <!-- Page specific script -->
     <script>
         $(function () {
-          $("#listPatientTable").DataTable({
+          $("#listSessionTable").DataTable({
             "responsive": true, "lengthChange": false, "autoWidth": false,
             "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-          }).buttons().container().appendTo('#listPatientTable_wrapper .col-md-6:eq(0)');
+          }).buttons().container().appendTo('#listSessionTable_wrapper .col-md-6:eq(0)');
         });
       </script>
     <!-- /.script -->

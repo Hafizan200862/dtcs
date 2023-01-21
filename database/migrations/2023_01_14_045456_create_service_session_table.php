@@ -20,7 +20,7 @@ class CreateServiceSessionTable extends Migration
             $table->foreign('session_id')->references('id')->on('sessions');
             $table->foreign('service_id')->references('id')->on('services');
             $table->string('teeth_no');
-            $table->string('service_remark');
+            $table->string('service_remark')->nullable();
             $table->timestamps();
         });
     }

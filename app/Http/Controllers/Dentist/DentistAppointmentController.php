@@ -8,6 +8,7 @@ use App\Models\Appointment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Admin\AppointmentRequest;
 
 class DentistAppointmentController extends Controller
@@ -21,9 +22,22 @@ class DentistAppointmentController extends Controller
     public function index()
     {
         $appointments = Appointment::all();
-
-        return view('dashboards.dentists.appointments.index', compact('appointments'));
+        $patients = Patient::all();
+        return view('dashboards.dentists.appointments.index', compact('appointments','patients'));
+    
     }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    // public function index($id)
+    // {
+    //     $appointments = DB::table('appointments')->where('user_id', $id);
+        
+    //     return view('dashboards.dentists.appointments.index', compact('appointments'));
+    // }
 
     /**
      * Show the form for creating a new resource.

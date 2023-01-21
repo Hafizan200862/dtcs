@@ -11,6 +11,12 @@ class Session extends Model
     use HasFactory;
     protected $guarded = [];
 
+
+    public function appointment()
+    {
+        return $this->belongsTo(Appointment::class); // specific the column
+    }
+
     public function patient(): BelongsTo
     {
         return $this->belongsTo(Patient::class); // specific the column
@@ -18,10 +24,13 @@ class Session extends Model
 
     public function services()
     {
-        return $this->belongsToMany(Service::class)->withPivot('tooth_id',['teeth_no','service_remark']);
+        // return $this->belongsToMany(Service::class)->withPivot('tooth_id',['teeth_no','service_remark']);
+        return $this->belongsToMany(Service::class)->withPivot(['teeth_no','service_remark']);
     }
+    
     public function teeth()
     {
-        return $this->belongsToMany(Tooth::class)->withPivot('service_id',['teeth_icdas','teeth_remark']);
+        return $this->hasMany(Teeth::class);
     }
+    
 }

@@ -24,7 +24,7 @@
         <div class="row mb-2">
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-left">
-                    <a href="{{ route('dentist.appointment.index') }}" type="button" class="btn btn-primary">Back</a>
+                    <a href="" type="button" class="btn btn-primary">Back</a>
                 </ol>
             </div>
         </div>
@@ -39,31 +39,30 @@
     <!-- SELECT2 EXAMPLE -->
     <div class="card card-primary">
         <div class="card-header">
-            <h3 class="card-title">Add Treatment</h3>
+            <h3 class="card-title">Record</h3>
             <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
                     <i class="fas fa-minus"></i>
                 </button>
             </div>
         </div>
-        <form method="POST" action="{{ route('dentist.session.store') }}" enctype="multipart/form-data">
+        <form method="POST" action="" enctype="multipart/form-data">
             @csrf
             <!-- /.card-header -->
             <div class="card-body">
                 <div class="row">
-                    <input type="hidden" name="appointment_id" value="{{ $appointments->id }}">
-                    <input type="hidden" name="patient_id" value="{{ $appointments->patient->id }}">
+                    
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>{{ __('Patient Name') }}</label>
                             <input class="form-control " style="width: 100%;" disabled="disabled" name="patient_name"
-                                value="{{ $appointments->patient->name }}">
+                                value="{{ $sessions->patient->name }}">
                         </div>
                         <!-- /.form-group -->
                         <div class="form-group">
                             <label>{{ __('Phone') }}</label>
                             <input class="form-control " style="width: 100%;" disabled="disabled" name="patient_phone"
-                                value="{{ $appointments->patient->phone }}">
+                                value="{{ $sessions->patient->phone }}">
                         </div>
                         <!-- /.form-group -->
                     </div>
@@ -73,7 +72,7 @@
                         <div class="form-group">
                             <label>{{ __('Gender') }}</label>
                             <input class="form-control " style="width: 100%;" disabled="disabled" name="patient_gender"
-                                value="{{ $appointments->patient->gender }}">
+                                value="{{ $sessions->patient->gender }}">
                         </div>
                         <!-- /.form-group -->
                     </div>
@@ -84,7 +83,7 @@
                         <div class="form-group">
                             <label>{{ __('Address') }}</label>
                             <input class="form-control " style="width: 100%;" disabled="disabled" name="patient_address"
-                                value="{{ $appointments->patient->address }}">
+                                value="{{ $sessions->patient->address }}">
                         </div>
                         <!-- /.form-group -->
                     </div>
@@ -97,77 +96,8 @@
                 <div class="row">
                     <!-- .left-col -->
                     <div class="col-sm-4">
-                        <table>
-                            <tr>
-                                <th>Number</th>
-                                <th>Name</th>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>Maxillary right third molar (upper wisdom tooth)</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Maxillary right second molar</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Maxillary right first molar</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Maxillary right second premolar</td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>Maxillary right first premolar</td>
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td>Maxillary right canine (eyetooth)</td>
-                            </tr>
-                            <tr>
-                                <td>7</td>
-                                <td>Maxillary right lateral incisor</td>
-                            </tr>
-                            <tr>
-                                <td>8</td>
-                                <td>Maxillary right central incisor</td>
-                            </tr>
-                            <tr>
-                                <td>9</td>
-                                <td>Maxillary left central incisor</td>
-                            </tr>
-                            <tr>
-                                <td>10</td>
-                                <td>Maxillary left lateral incisor</td>
-                            </tr>
-                            <tr>
-                                <td>11</td>
-                                <td>Maxillary left canine (eyetooth)</td>
-                            </tr>
-                            <tr>
-                                <td>12</td>
-                                <td>Maxillary left first premolar</td>
-                            </tr>
-                            <tr>
-                                <td>13</td>
-                                <td>Maxillary left second premolar</td>
-                            </tr>
-                            <tr>
-                                <td>14</td>
-                                <td>Maxillary left first molar</td>
-                            </tr>
-                            <tr>
-                                <td>15</td>
-                                <td>Maxillary left second molar</td>
-                            </tr>
-                            <tr>
-                                <td>16</td>
-                                <td>Maxillary left third molar (upper wisdom tooth)</td>
-                            </tr>
-                        </table>
                     </div>
+                    <!-- /.left-col -->
                     <!-- .mid-col -->
                     <div class="col-sm-4">
                         <div id="wrapper" class="tooth-chart" style="display: flex; align-items: center">
@@ -566,79 +496,11 @@
                             </svg>
                         </div>
                     </div>
+                    <!-- /.mid-col -->
                     <!-- .right-col -->
                     <div class="col-sm-4">
-                        <table>
-                            <tr>
-                                <th>Number</th>
-                                <th>Name</th>
-                            </tr>
-                            <tr>
-                                <td>17</td>
-                                <td>Mandibular left third molar (upper wisdom tooth)</td>
-                            </tr>
-                            <tr>
-                                <td>18</td>
-                                <td>Mandibular left second molar</td>
-                            </tr>
-                            <tr>
-                                <td>19</td>
-                                <td>Mandibular left first molar</td>
-                            </tr>
-                            <tr>
-                                <td>20</td>
-                                <td>Mandibular left second premolar</td>
-                            </tr>
-                            <tr>
-                                <td>21</td>
-                                <td>Mandibular left first premolar</td>
-                            </tr>
-                            <tr>
-                                <td>22</td>
-                                <td>Mandibular left canine (eyetooth)</td>
-                            </tr>
-                            <tr>
-                                <td>23</td>
-                                <td>Mandibular left lateral incisor</td>
-                            </tr>
-                            <tr>
-                                <td>24</td>
-                                <td>Mandibular left central incisor</td>
-                            </tr>
-                            <tr>
-                                <td>25</td>
-                                <td>Mandibular right central incisor</td>
-                            </tr>
-                            <tr>
-                                <td>26</td>
-                                <td>Mandibular right lateral incisor</td>
-                            </tr>
-                            <tr>
-                                <td>27</td>
-                                <td>Mandibular right canine (eyetooth)</td>
-                            </tr>
-                            <tr>
-                                <td>28</td>
-                                <td>Mandibular right first premolar</td>
-                            </tr>
-                            <tr>
-                                <td>29</td>
-                                <td>Mandibular right second premolar</td>
-                            </tr>
-                            <tr>
-                                <td>30</td>
-                                <td>Mandibular right first molar</td>
-                            </tr>
-                            <tr>
-                                <td>31</td>
-                                <td>Mandibular right second molar</td>
-                            </tr>
-                            <tr>
-                                <td>32</td>
-                                <td>Mandibular right third molar (upper wisdom tooth)</td>
-                            </tr>
-                        </table>
                     </div>
+                    <!-- /.right-col -->
                 </div>
             </div>
             <!-- .card-body -->
@@ -658,7 +520,7 @@
                                         <input class="form-control" value='1' disabled>
                                     </td>
                                     <td>
-                                        <select id="teeth_1" name="teeth_1" class="form-control">
+                                        <select id="teeth_1" name="teeth_1" class="form-control" value="">
                                             <option value='0'> 0 </option>
                                             <option value='1'> 1 </option>
                                             <option value='2'> 2 </option>
@@ -1205,107 +1067,28 @@
                         </table>
                     </div>
                 </div>
-                {{-- <div class="row">
-                    <table class="table" id="table-tooth">
-                            <thead>
-                                <tr>
-                                    <th class="col-sm-4">Tooth</th>
-                                    <th class="col-sm-4">ICDAS</th>
-                                    <th class="col-md-8">Remark</th>
-                                    <th><a href="javascript:void(0)" class="btn btn-success addRow">+</a></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <select id="teeth" name="teeth[]" class="form-control">
-                                            @foreach($teeth as $id => $tooth)
-                                            <option value="{{ $id }}">{{ $tooth }}</option>
-                                            @endforeach
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <select id="teeth_icdas" name="teeth_icdas[]" class="form-control">
-                                            <option value='0'> 0 </option>
-                                            <option value='1'> 1 </option>
-                                            <option value='2'> 2 </option>
-                                            <option value='3'> 3 </option>
-                                            <option value='4'> 4 </option>
-                                            <option value='5'> 5 </option>
-                                            <option value='6'> 6 </option>
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <input type="text" id="teeth_remark" name="teeth_remark[]"
-                                            class="form-control" />
-                                    </td>
-                                    <th><a href="javascript:void(0)" class="btn btn-danger">-</a></th>
-                                </tr>
-                            </tbody>
-                        </table>
-                </div> --}}
             </div>
             <div class="card-body">
                 <div class="row">
                     <table class="table" id="table-service">
                         <thead>
                             <tr>
-                                <th class="col-sm-4">Treatment</th>
+                                <th class="col-sm-4">Service</th>
                                 <th class="col-sm-4">Position Tooth No</th>
                                 <th class="col-md-8">Remark</th>
-                                <th><a href="javascript:void(0)" class="btn btn-success addRow">+</a></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>
-                                    <select id="services" name="services[]" class="form-control">
-                                        @foreach ($services as $id => $service)
-                                        <option value="{{ $id }}">{{ $service }}</option>
-                                        @endforeach
-                                    </select>
+                                    <input id="services" name="services[]" class="form-control" disabled="disabled">
                                 </td>
                                 <td>
-                                    <select id="teeth_no" name="teeth_no[]" class="form-control">
-                                        <option value='1'> 1 </option>
-                                        <option value='2'> 2 </option>
-                                        <option value='3'> 3 </option>
-                                        <option value='4'> 4 </option>
-                                        <option value='5'> 5 </option>
-                                        <option value='6'> 6 </option>
-                                        <option value='7'> 7 </option>
-                                        <option value='8'> 8 </option>
-                                        <option value='9'> 9 </option>
-                                        <option value='10'> 10 </option>
-                                        <option value='11'> 11 </option>
-                                        <option value='12'> 12 </option>
-                                        <option value='13'> 13 </option>
-                                        <option value='14'> 14 </option>
-                                        <option value='15'> 15 </option>
-                                        <option value='16'> 16 </option>
-                                        <option value='17'> 17 </option>
-                                        <option value='18'> 18 </option>
-                                        <option value='19'> 19 </option>
-                                        <option value='20'> 20 </option>
-                                        <option value='21'> 21 </option>
-                                        <option value='22'> 22 </option>
-                                        <option value='23'> 23 </option>
-                                        <option value='24'> 24 </option>
-                                        <option value='25'> 25 </option>
-                                        <option value='26'> 26 </option>
-                                        <option value='27'> 27 </option>
-                                        <option value='28'> 28 </option>
-                                        <option value='29'> 29 </option>
-                                        <option value='30'> 30 </option>
-                                        <option value='31'> 31 </option>
-                                        <option value='32'> 32 </option>
-                                    </select>
+                                    <input id="teeth_no" name="teeth_no[]" class="form-control" disabled="disabled">
                                 </td>
                                 <td>
-                                    <input type="text" id="service_remark" name="service_remark[]"
-                                        class="form-control" />
+                                    <input type="text" id="service_remark" name="service_remark[]" class="form-control" disabled="disabled"/>
                                 </td>
-                                <th><a href="javascript:void(0)" class="btn btn-danger">-</a></th>
                             </tr>
                         </tbody>
                     </table>
@@ -1314,9 +1097,8 @@
             <div class="card-body">
                 <label>General Notes</label>
                 <div class="form-group">
-                    <textarea name="session_note" id="session_note" cols="10" rows="5" class="form-control"></textarea>
+                    <textarea class="form-control" cols="10" rows="5" disabled="disabled" name="session_note" value=""></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Save Record</button>
             </div>
         </form>
     </div>
@@ -1324,6 +1106,8 @@
 </section>
 <!-- /.content -->
 {{-- patient form end --}}
+
+
 
 
 
@@ -1357,69 +1141,11 @@
     $(function () {
      //Initialize Select2 Elements
     $('.select2').select2()
-    // $("#services").select2();
-    // $("#teeth").select2();
+
     });
 
-    //add row service table
-    $('#table-service thead').on('click','.addRow', function(){
-        var tr = "<tr>"+
-                    "<td>"+
-                        "<select id='services' name='services[]' class='form-control'>"+
-                            "@foreach ($services as $id => $service)"+
-                            "<option value='{{ $id }}'>{{ $service }}</option>"+
-                            "@endforeach"+
-                            "</select>"+
-                    "</td>"+
-                    "<td>"+
-                        "<select id='teeth_no' name='teeth_no[]' class='form-control'>"+
-                            "<option value='1'> 1 </option>"+
-                            "<option value='2'> 2 </option>"+
-                            "<option value='3'> 3 </option>"+
-                            "<option value='4'> 4 </option>"+
-                            "<option value='5'> 5 </option>"+
-                            "<option value='6'> 6 </option>"+
-                            "<option value='7'> 7 </option>"+
-                            "<option value='8'> 8 </option>"+
-                            "<option value='9'> 9 </option>"+
-                            "<option value='10'> 10 </option>"+
-                            "<option value='11'> 11 </option>"+
-                            "<option value='12'> 12 </option>"+
-                            "<option value='13'> 13 </option>"+
-                            "<option value='14'> 14 </option>"+
-                            "<option value='15'> 15 </option>"+
-                            "<option value='16'> 16 </option>"+
-                            "<option value='17'> 17 </option>"+
-                            "<option value='18'> 18 </option>"+
-                            "<option value='19'> 19 </option>"+
-                            "<option value='20'> 20 </option>"+
-                            "<option value='21'> 21 </option>"+
-                            "<option value='22'> 22 </option>"+
-                            "<option value='23'> 23 </option>"+
-                            "<option value='24'> 24 </option>"+
-                            "<option value='25'> 25 </option>"+
-                            "<option value='26'> 26 </option>"+
-                            "<option value='27'> 27 </option>"+
-                            "<option value='28'> 28 </option>"+
-                            "<option value='29'> 29 </option>"+
-                            "<option value='30'> 30 </option>"+
-                            "<option value='31'> 31 </option>"+
-                            "<option value='32'> 32 </option>"+
-                            "</select>"+
-                    "</td>"+
-                    "<td>"+
-                        "<input type='text' id='service_remark' name='service_remark[]' class='form-control' />"+
-                    "</td>"+
-                        "<th><a href='javascript:void(0)' class='btn btn-danger deleteRow'>-</a></th>"+
-                    "</tr>"
 
-        $('#table-service tbody').append(tr);
-    });
 
-    //delete row service table
-    $('#table-service tbody').on('click','.deleteRow', function(){
-        $(this).parent().parent().remove();
-    });
 
 </script>
 

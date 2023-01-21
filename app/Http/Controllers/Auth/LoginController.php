@@ -41,6 +41,7 @@ class LoginController extends Controller
             }
             elseif(Auth()->user()->role == 1)
             {
+
                 return route('receptionist.dashboard');
             }
             elseif(Auth()->user()->role == 0)
@@ -63,34 +64,6 @@ class LoginController extends Controller
     //
     public function login(Request $request)
     {
-        // return $request->input();
-        // $input = $request->all();
-        // $this->validate($request,
-        // [
-        //     'email'=>'required|email',
-        //     'password'=>'required'
-        // ]);
-
-        // if(auth()->attempt(array('email'=>$input['email'],'password'=>$input['password'])))
-        // {
-        //     if(auth()->user()->role == 2)
-        //     {
-        //         return redirect()->route('admin.dashboard');
-        //     }
-        //     elseif(auth()->user()->role == 1)
-        //     {
-        //         return redirect()->route('receptionist.dashboard');
-        //     }
-        //     elseif(auth()->user()->role == 0)
-        //     {
-        //         return redirect()->route('dentist.dashboard');
-        //     }
-        //     else
-        //     {
-        //         // return redirect()->route('login')->with('error','Email and password are wrong');
-        //         return back()->with('error', 'Your account do not in our database.');
-        //     }
-        // }
         
         $input = $request->all();
         $request->validate([
@@ -125,12 +98,14 @@ class LoginController extends Controller
                         // $request->session()->put('role', $userInfo->role);
                         Session::put('role', 1);
                         return redirect()->route('receptionist.dashboard');
+                        // return redirect()->route('receptionist.calendar.index');
                     }
                     elseif(auth()->user()->role == 0)
                     {
                         // $request->session()->put('role', $userInfo->role);
                         Session::put('role', 0);
                         return redirect()->route('dentist.dashboard');
+                        // return redirect()->route('dentist.appointment.index');
                     }
                 }
                 

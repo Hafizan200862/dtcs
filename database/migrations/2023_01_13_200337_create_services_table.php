@@ -11,10 +11,23 @@ class CreateServicesTable extends Migration
      *
      * @return void
      */
+    // public function up()
+    // {
+    //     Schema::create('services', function (Blueprint $table) {
+    //         $table->id();
+    //         $table->string('service_name');
+    //         $table->float('service_price');
+    //         $table->timestamps();
+    //     });
+    // }
+    
+    // test
     public function up()
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
+            // $table->unsignedBigInteger('session_id');
+            // $table->foreign('session_id')->references('id')->on('sessions');
             $table->string('service_name');
             $table->float('service_price');
             $table->timestamps();

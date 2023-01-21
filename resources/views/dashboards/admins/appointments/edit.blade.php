@@ -1,5 +1,5 @@
 @extends('dashboards.admins.layouts.admin-dash-layout')
-@section('title','Add Appointment')
+@section('title','Edit Appointment')
 
 @section('content')
 
@@ -61,18 +61,19 @@
                         </div>
                     </div>
                     <!-- /.card-header -->
-                    <form action="{{ route('admin.appointment.store') }}" method="post">
+                    <form action="{{ route('admin.appointment.update', $appointments->id) }}" method="post">
                         @csrf
+                        @method('PUT')
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="title">Title</label>
                                 <input type="title" class="form-control" id="title" name="title"
-                                    placeholder="Enter Title" value="{{ old('title') }}">
+                                    placeholder="Enter Title" value="{{  $appointments->title }}">
                                 <span class="text-danger">@error('title'){{ $message }}@enderror</span>
                             </div>
                             <div class="form-group">
                                 <label for="dentist">{{ __('Dentist') }}</label>
-                                <select class="form-control select2" id="user_id" name="user_id">
+                                <select class="form-control select2" id="user_id" name="user_id" >
                                     @foreach($dentists as $id => $dentist)
                                     <option value="{{ $id }}"> {{ $dentist }}</option>
                                     @endforeach
@@ -93,7 +94,7 @@
                                         <label for="start_time">{{ __('Start Date and Time') }}</label>
                                         <div class="input-group date" id="startdatetime" data-target-input="nearest">
                                             <input type="text" class="form-control datetimepicker-input"
-                                                data-target="#startdatetime" name="start_time" />
+                                                data-target="#startdatetime" name="start_time" value="{{ $appointments->start_time }}"/>
                                             <div class="input-group-append" data-target="#startdatetime"
                                                 data-toggle="datetimepicker">
                                                 <div class="input-group-text"><i class="fa fa-calendar"></i></div>
@@ -105,7 +106,7 @@
                                         <label for="finish_time">{{ __('Finish Date and Time') }}</label>
                                         <div class="input-group date" id="finishdatetime" data-target-input="nearest">
                                             <input type="text" class="form-control datetimepicker-input"
-                                                data-target="#finishdatetime" name="finish_time" />
+                                                data-target="#finishdatetime" name="finish_time" value="{{ $appointments->finish_time }}"/>
                                             <div class="input-group-append" data-target="#finishdatetime"
                                                 data-toggle="datetimepicker">
                                                 <div class="input-group-text"><i class="fa fa-calendar"></i></div>
@@ -117,7 +118,7 @@
                             </div>
                             <!-- /.row -->
                             <!-- /.card-body -->
-                            <button type="submit" class="btn btn-primary">Save</button>
+                            <button type="submit" class="btn btn-primary">Update</button>
                         </div>
                     </form>
                 </div>
@@ -218,8 +219,5 @@
   
 
 </script>
-
-
-
 
 @endsection

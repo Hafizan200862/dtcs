@@ -51,7 +51,7 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form action="{{ route('adminAddService') }}" method="post">
+                    <form action="{{ route('admin.service.store') }}" method="post">
                         @csrf
                         <div class="card-body">
                             <div class="form-group">

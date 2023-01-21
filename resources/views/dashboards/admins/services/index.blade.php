@@ -15,7 +15,7 @@
                 <!-- Add Services Button -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <a href="{{ route('adminAddServiceForm') }}" type="button" class="btn btn-primary">Add Service</a>
+                        <a href="{{ route('admin.service.add') }}" type="button" class="btn btn-primary">Add Service</a>
                     </ol>
                 </div>
                 <!-- /.services-button-end -->

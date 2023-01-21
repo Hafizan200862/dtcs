@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dentist;
 
+use App\Models\Patient;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -11,10 +12,12 @@ class DentistPatientController extends Controller
     // index
     function index()
     {
-        $data = array(
-            'list'=> DB::table('patients')->get()
-        );
-        return view('dashboards.dentists.patients.index', $data);
+        $patients = Patient::all();
+        return view('dashboards.dentists.patients.index', compact('patients'));
+        // $data = array(
+        //     'list'=> DB::table('patients')->get()
+        // );
+        // return view('dashboards.dentists.patients.index', $data);
 
     }
 

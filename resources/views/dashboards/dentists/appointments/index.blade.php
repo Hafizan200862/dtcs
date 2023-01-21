@@ -71,7 +71,7 @@
                                             <td>{{ $appointment->start_time }}</td>
                                             <td>{{ $appointment->finish_time }}</td>
                                             <td>
-                                                <a href="{{ route('dentistAddSessionForm', $appointment->id) }}"
+                                                <a href="{{ route('dentist.session.add', $appointment->id) }}"
                                                     type="button" class="btn btn-primary">Start Appointment</a>
                                             </td> <!-- start appointment -->
                                             <td>

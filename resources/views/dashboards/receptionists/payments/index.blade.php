@@ -1,5 +1,5 @@
-@extends('dashboards.admins.layouts.admin-dash-layout')
-@section('title','Dentist')
+@extends('dashboards.receptionists.layouts.receptionist-dash-layout')
+@section('title','Payment')
 
 @section('content')
 
@@ -10,15 +10,15 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Dentist</h1>
+                    <h1>Payment</h1>
                 </div>
-                <!-- Add Dentist Button -->
+                <!-- Add Patient Button -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <a href="{{ route('adminAddDentistForm') }}" type="button" class="btn btn-primary">Add Dentist</a>
+                        <a href="" type="button" class="btn btn-primary">Add Payment</a>
                     </ol>
                 </div>
-                <!-- /.dentist-button-end -->
+                <!-- /.patient-button-end -->
             </div>
         </div>
         <!-- /.container-fluid -->
@@ -31,29 +31,47 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">DataTable with default features from dentist/index</h3>
+                            <h3 class="card-title">DataTable with default features from payment/index</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                                <table id="listDentistTable" class="table table-bordered table-striped">
+                                <table id="listPatientTable" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Phone</th>
-                                        <th>Gender</th>
-                                        {{-- <th>Gender</th> --}}
+                                        <th>No</th>
+                                        <th>Session ID</th>
+                                        <th>Date</th>
+                                        <th>Total</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach ($list as $item)
+                                {{-- @foreach () --}}
                                     <tr>
-                                        <td>{{ $item->name }}</td>
-                                        <td>{{ $item->email }}</td>
-                                        <td>{{ $item->phone}}</td>
-                                        <td>{{ $item->gender}}</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <div class="btn-group btn-group">
+                                                <a href="" class="btn btn-info">
+                                                    <i class="fas fa-pen"></i>
+                                                </a>
+                                                <form onclick="return confirm('are you sure ? ')" class="d-inline" action=""
+                                                    method="POST">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button class="btn btn-danger"
+                                                        style="border-top-left-radius: 0;border-bottom-left-radius: 0;">
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </td>
                                     </tr>
-                                @endforeach    
+                                {{-- @endforeach     --}}
                                 </tbody>
                             </table>
                         </div>
@@ -74,6 +92,11 @@
 
 @section('script')
 <!-- REQUIRED SCRIPTS -->
+
+    <!-- DataTables -->
+    <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 
     <!-- jQuery -->
     <script src="plugins/jquery/jquery.min.js"></script>
@@ -99,10 +122,10 @@
     <!-- Page specific script -->
     <script>
         $(function () {
-          $("#listDentistTable").DataTable({
+          $("#listPatientTable").DataTable({
             "responsive": true, "lengthChange": false, "autoWidth": false,
             "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-          }).buttons().container().appendTo('#listDentistTable_wrapper .col-md-6:eq(0)');
+          }).buttons().container().appendTo('#listPatientTable_wrapper .col-md-6:eq(0)');
         });
       </script>
     <!-- /.script -->

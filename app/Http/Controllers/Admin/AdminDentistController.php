@@ -68,4 +68,34 @@ class AdminDentistController extends Controller
                 return redirect()->back()->with('error', 'Data cannot be inserted');
             }
         }
+
+        // function edit(Request $request)
+        // {
+        //     $request->validate([
+        //     'name' => ['required', 'string', 'max:255'],
+        //     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        //     'password' => ['required', 'string', 'min:8', 'confirmed'],
+        //     'phone' => ['required', 'string', 'min:8', 'max:11'],
+        //     ]);
+
+        //     $user = new User();
+        //     $user->name = $request->name;
+        //     $user->email = $request->email;
+        //     $user->role = 0;
+        //     $user->password = Hash::make($request->password);
+        //     $user->phone = $request->phone;
+        //     $user->gender = $request->gender;
+
+
+        //     if ($user->save())
+        //     {
+        //         return redirect()->back()->with('success', 'Data have been succesfully inserted');
+        //     }
+        //     else
+        //     {
+        //         return redirect()->back()->with('error', 'Data cannot be inserted');
+        //     }
+        // }
+
+
 }

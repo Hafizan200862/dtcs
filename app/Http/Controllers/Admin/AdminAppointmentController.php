@@ -30,7 +30,7 @@ class AdminAppointmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function addAppointmentForm()
+    public function add()
     {
         $dentists = User::all()
             ->where('role', '<', '2')
@@ -40,23 +40,77 @@ class AdminAppointmentController extends Controller
         return view('dashboards.admins.appointments.add', compact('dentists', 'patients'));
     }
 
-    // add appointment
+    // store appointment
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function addAppointment(AppointmentRequest $request)
+    public function store(AppointmentRequest $request)
     {
-        $appointment = Appointment::create($request->validated());
+        $appointments = Appointment::create($request->validated());
 
-        if ($appointment->save()) {
+        if ($appointments->save()) {
             return redirect()->back()->with('success', 'Appointment have been succesfully inserted');
         } else {
             return redirect()->back()->with('error', 'Appointment have been succesfully inserted');
         }
     }
 
+    // edit appointment
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $appointments = Appointment::find($id);
+        $dentists = User::all()
+            ->where('role', '<', '2')
+            ->pluck('name', 'id');
+        $patients = Patient::all()->pluck('name', 'id');
+        return view('dashboards.admins.appointments.edit', compact('appointments','dentists', 'patients'));
+    }
+
+    // update appointment
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function update(AppointmentRequest $request, $id)
+    {
+        $appointments = Appointment::find($id);
+        $appointments->update($request->validated());
+
+        if ($appointments) {
+            return redirect()->back()->with('success', 'Appointment have been succesfully updated');
+        } else {
+            return redirect()->back()->with('error', 'Appointment have been unsuccesfully updated');
+        }
+    }
+
+    // delete appointment
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $appointments = Appointment::find($id);
+        $appointments->delete();
+
+        if ($appointments) {
+            return redirect()->back()->with('success', 'Appointment have been succesfully deleted');
+        } else {
+            return redirect()->back()->with('error', 'Appointment have been unsuccesfully deleted');
+        }
+    }
     
 }
