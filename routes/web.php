@@ -72,7 +72,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'auth', 'PreventB
     Route::put('appointment/edit/{id}', [AdminAppointmentController::class, 'update'])->name('admin.appointment.update');
     // delete
     Route::delete('appointment/delete/{id}', [AdminAppointmentController::class, 'destroy'])->name('admin.appointment.destroy');
-   
+
     // SESSION
     // index
     // Route::get('session',[AdminTreatmentController::class,'session'])->name('admin.session.index');
@@ -104,8 +104,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'auth', 'PreventB
     Route::post('service/add', [AdminServiceController::class, 'store'])->name('admin.service.store');
 
     // PAYMENT
-    Route::get('payment',[AdminPaymentController::class,'index'])->name('admin.payment.index');
-
+    Route::get('payment', [AdminPaymentController::class, 'index'])->name('admin.payment.index');
 });
 
 // DENTIST
@@ -159,5 +158,5 @@ Route::group(['prefix' => 'receptionist', 'middleware' => ['isReceptionist', 'au
     Route::get('calendar', [ReceptionistCalendarController::class, 'index'])->name('receptionist.calendar.index');
 
     // PAYMENT
-    Route::get('payment',[ReceptionistPaymentController::class,'index'])->name('receptionist.payment.index');
+    Route::get('payment', [ReceptionistPaymentController::class, 'index'])->name('receptionist.payment.index');
 });
